@@ -1,0 +1,30 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    background-color: darkgreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 75px 0;
+    gap: 50px;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.new-book {
+    background-color: darkturquoise;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: 1px solid darkturquoise;
+    box-shadow: 5px 5px 2rem black;
+    border-radius: 50px;
+    padding: 15px 40px;
+}
