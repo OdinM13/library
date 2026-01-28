@@ -106,3 +106,34 @@ form div {
 .book-stats {
     font-size: 1.2rem;
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+}
+
+.buttons button {
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-top: 20px;
+    font-size: 1.0rem;
+    border: 1px solid white;
+}
+
+.delete {
+    color: #E75040;
+    background-color: rgb(231, 80, 64, 0.3);
+}
+
+.status:hover {
+    background-color: rgb(209, 250, 229, 0.5);
+    border: 1px solid rgb(209, 250, 229, 1);
+    box-shadow: 0 10px 20px rgb(209, 250, 229, 1);
+}
+
+.delete:hover {
+    background-color: rgb(231, 80, 64, 0.5);
+    border: 1px solid rgb(231, 80, 64, 0.3);
+    box-shadow: 0 10px 20px rgb(231, 80, 64, 0.3);
+}
