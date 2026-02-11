@@ -1,14 +1,17 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-    if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor");
+class Book {
+    constructor (title, author, pages, read) { 
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = crypto.randomUUID();
     }
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID();
+
+    toggleReadStatus() {
+       this.read = !this.read; 
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -42,25 +45,25 @@ submitButton.addEventListener("click", () => {
     dialog.close();
 })
 
-function addElement(title, author, pages, read, id) {
+function addElement(book) {
     const newDiv = document.createElement("div");
     newDiv.classList.add('book');
 
     const newTitle = document.createElement("div");
     newTitle.classList.add('book-title');
-    newTitle.appendChild(document.createTextNode(title));
+    newTitle.appendChild(document.createTextNode(book.title));
     
     const newAuthor = document.createElement("div");
     newAuthor.classList.add('book-stats');
-    newAuthor.appendChild(document.createTextNode("Author: " + author));
+    newAuthor.appendChild(document.createTextNode("Author: " + book.author));
 
     const newPages = document.createElement("div");
     newPages.classList.add('book-stats');
-    newPages.appendChild(document.createTextNode("Pages: " + pages));
+    newPages.appendChild(document.createTextNode("Pages: " + book.pages));
 
     const newRead = document.createElement("div");
     newRead.classList.add('book-stats');
-    newRead.appendChild(document.createTextNode(`Read: ${read ? "Yes" : "No"}`));
+    newRead.appendChild(document.createTextNode(`Read: ${book.read ? "Yes" : "No"}`));
 
     const currentDiv = document.querySelector(".books");
     currentDiv.insertAdjacentElement('beforeend', newDiv);
@@ -80,15 +83,7 @@ function addElement(title, author, pages, read, id) {
 
     // Add Function to Change Read Status
     newButton1.addEventListener("click", () => {
-        for (const element of myLibrary) {
-            if (id === element.id) {
-                if (element.read === true) {
-                    element.read = false;
-                } else {
-                    element.read = true;
-                }
-            }
-        }
+        book.toggleReadStatus();
         displayBooks();
     })
 
@@ -115,12 +110,7 @@ function displayBooks() {
     const bookDiv = document.querySelector(".books");
     bookDiv.innerHTML = "";
     for (const element of myLibrary) {
-        let title = element.title;
-        let author = element.author;
-        let pages = element.pages;
-        let read = element.read;
-        let id = element.id;
-        addElement(title, author, pages, read, id);
+        addElement(element);
     }
 }
 
